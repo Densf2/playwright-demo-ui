@@ -25,7 +25,17 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["html"], ["dot"], ["line"]],
+  reporter: [
+    ["html", { open: "never" }],
+    ["dot"],
+    ["line"],
+    [
+      "@testomatio/reporter/lib/adapter/playwright.js",
+      {
+        apiKey: process.env.TESTOMAT,
+      },
+    ],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -38,7 +48,9 @@ export default defineConfig({
     },
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    trace: "retain-on-first-failure",
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
   },
 
   /* Configure projects for major browsers */

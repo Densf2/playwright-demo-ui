@@ -12,7 +12,7 @@ test.describe(
     const loginName = process.env.LOGIN_USERNAME;
     const loginPass = process.env.LOGIN_PASS;
 
-    test.skip("open main page", async ({ page }) => {
+    test("open main page", async ({ page }) => {
       await page.goto("/");
       await page.waitForTimeout(3000);
       // await page.locator('button.header_signin').click();
@@ -21,12 +21,12 @@ test.describe(
       await signinButton.click();
     });
 
-    test.skip("usage of getByRole", async ({ page }) => {
+    test("usage of getByRole", async ({ page }) => {
       await page.goto("/");
       await page.getByRole("button", { name: "Sign In" }).click();
     });
 
-    test.skip("usage of getByText", async ({ page }) => {
+    test("usage of getByText", async ({ page }) => {
       await page.goto("/");
       await expect(page.getByText("Sign In")).toBeVisible();
     });
@@ -45,7 +45,7 @@ test.describe(
       await page.waitForTimeout(3000);
     });
 
-    test.skip("usage of fill method and soft assert for pass field", async ({
+    test("usage of fill method and soft assert for pass field", async ({
       page,
     }) => {
       await page.goto("/");
@@ -73,7 +73,7 @@ test.describe(
       { tag: "@contain_screenshot" },
       async ({ page }) => {
         await page.goto("/");
-        await page.getByRole("button", { name: "Sign In" }).click();
+        await page.getByRole("QQQ.button", { name: "Sign In" }).click();
         await page.locator('input[name="email"]').fill(loginName);
         await page.locator('input[name="password"]').fill(loginPass);
         await page
