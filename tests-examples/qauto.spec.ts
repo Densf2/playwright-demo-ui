@@ -57,7 +57,7 @@ test.describe(
       // soft assertion
       await expect
         .soft(page.locator("div.invalid-feedback p"))
-        .toContainText("Blah-Blah");
+        .toContainText("Password required");
       await page.locator('input[name="password"]').fill(loginPass);
       await page.getByRole("button", { name: "Login" }).click({ force: true });
 
@@ -66,14 +66,40 @@ test.describe(
       const textOnGaragePage = page.locator(".panel-page h1");
       await textOnGaragePage.waitFor({ state: "visible" });
       await expect(textOnGaragePage).toContainText("Garage");
+      await page.evaluate(() => {
+        localStorage.setItem("key-my1", "value-my1");
+      });
+      const readLSVal = await page.evaluate(() => {
+        return localStorage.getItem("key-my1");
+      });
+      console.log(`data from local storage: ${readLSVal}`);
+      // page evaluate for session storage
+      await page.evaluate(() => {
+        sessionStorage.setItem("session-key-my-2", "session-value-my-2");
+      });
+      const readSessVal = await page.evaluate(() => {
+        return sessionStorage.getItem("session-key-my-2");
+      });
+      console.log(`data from session storage: ${readSessVal}`);
+      await writeToSessionStorage(page, "key2", "value_for_key2");
     });
+
+    const writeToSessionStorage = async (page, key, value) => {
+      await page.evaluate(
+        (key, value) => {
+          sessionStorage.setItem(key, value);
+        },
+        key,
+        value
+      );
+    };
 
     test(
       "usage few selectors",
       { tag: "@contain_screenshot" },
       async ({ page }) => {
         await page.goto("/");
-        await page.getByRole("QQQ.button", { name: "Sign In" }).click();
+        await page.getByRole("button", { name: "Sign In" }).click();
         await page.locator('input[name="email"]').fill(loginName);
         await page.locator('input[name="password"]').fill(loginPass);
         await page

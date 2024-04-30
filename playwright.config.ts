@@ -29,12 +29,12 @@ export default defineConfig({
     ["html", { open: "never" }],
     ["dot"],
     ["line"],
-    [
-      "@testomatio/reporter/lib/adapter/playwright.js",
-      {
-        apiKey: process.env.TESTOMAT,
-      },
-    ],
+    // [
+    //   "@testomatio/reporter/lib/adapter/playwright.js",
+    //   {
+    //     apiKey: process.env.TESTOMAT,
+    //   },
+    // ],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {

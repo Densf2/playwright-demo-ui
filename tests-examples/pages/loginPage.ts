@@ -7,12 +7,18 @@ export class LoginPage {
   inputEmail: Locator;
   inputPass: Locator;
   header: any;
+  loginButtonForm: any;
   constructor(page: Page) {
     this.page = page;
     this.signInButton = page.getByRole("button", { name: "Sign In" });
     this.inputEmail = page.getByLabel("Email");
     this.inputPass = page.getByLabel("Password");
     this.header = new Header(page);
+    this.loginButtonForm = page.getByRole("button", { name: "Login" });
+  }
+
+  async openPage() {
+    await this.page.goto("/");
   }
 
   async buttonLogin(): Promise<Locator> {
@@ -27,6 +33,7 @@ export class LoginPage {
     // click input for password
     await this.inputPass.click();
     await this.inputPass.fill("Qwerty+1");
+    await this.loginButtonForm.click();
   }
 
   async loginWithDynamicData(userD: any, passD: any) {

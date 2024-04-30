@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto("/");
 });
 
-test("test with valid data", async ({ page }) => {
+test("test with valid data", { tag: "@codegen" }, async ({ page }) => {
   const loginpage = new LoginPage(page);
   await loginpage.loginWithDefaultParams();
   const button = await loginpage.buttonLogin();
