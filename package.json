@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "ENV=test npx playwright test tests-examples/storage-state-usage.spec.ts --project=chromium-with-setup"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,7 +13,8 @@
     "@playwright/test": "^1.43.1",
     "@testomatio/reporter": "^1.4.0",
     "@types/node": "^20.12.2",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "newman": "^6.1.2"
   },
   "dependencies": {
     "ts-node": "^10.9.2"
