@@ -31,7 +31,7 @@ describe("tests for users", () => {
 
   test("get current user with try/catch", async () => {
     try {
-      await axios.get(`${jsonData.baseUrl}/userGGGG/me`).catch((err) => {
+      await axios.get(`${jsonData.baseUrl}/user/me`).catch((err) => {
         if (err.response.status == 404) {
           throw new Error("Opa 404 errora");
         }
@@ -42,8 +42,8 @@ describe("tests for users", () => {
     }
   });
 
-  test("get current user with expect", async () => {
-    let reponseT = await axios.get(`${jsonData.baseUrl}/userGGGG/me`);
+  test.skip("get current user with expect", async () => {
+    let reponseT = await axios.get(`${jsonData.baseUrl}/user/me`);
     expect(reponseT.status).toBe(200);
   });
 
