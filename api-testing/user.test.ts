@@ -14,17 +14,14 @@ describe("tests for users", () => {
   });
 
   apiClient.interceptors.request.use(function (config) {
+    config.headers.Authorization = `Bearer ${jsonData.token}`;
     console.log(`Request URL: ${config.baseURL}${config.url}`);
     return config;
   });
 
   test("get current user", async () => {
     let current_user_data = await apiClient
-      .get(`/user/me`, {
-        headers: {
-          Authorization: `Bearer ${jsonData.token}`,
-        },
-      })
+      .get(`/user/me`)
       .then(function (response) {
         console.log(response.data);
         console.log(response.status);
@@ -34,29 +31,19 @@ describe("tests for users", () => {
 
   test("get current user with try/catch", async () => {
     try {
-      await axios
-        .get(`${jsonData.baseUrl}/userGGGG/me`, {
-          headers: {
-            Authorization: `Bearer ${jsonData.token}`,
-          },
-        })
-        .catch((err) => {
-          if (err.response.status == 404) {
-            throw new Error("Opa 404 errora");
-          }
-          throw err;
-        });
+      await axios.get(`${jsonData.baseUrl}/userGGGG/me`).catch((err) => {
+        if (err.response.status == 404) {
+          throw new Error("Opa 404 errora");
+        }
+        throw err;
+      });
     } catch (err) {
       console.error(err);
     }
   });
 
   test("get current user with expect", async () => {
-    let reponseT = await axios.get(`${jsonData.baseUrl}/userGGGG/me`, {
-      headers: {
-        Authorization: `Bearer ${jsonData.token}`,
-      },
-    });
+    let reponseT = await axios.get(`${jsonData.baseUrl}/userGGGG/me`);
     expect(reponseT.status).toBe(200);
   });
 
@@ -68,19 +55,11 @@ describe("tests for users", () => {
     //     lastName: 'Owais'
     //   })
     // })
-    let put_user = await axios.put(
-      `${jsonData.baseUrl}/users/4`,
-      {
-        firstName: fUserName,
-        lastName: fLastName,
-        phone: fPhoneN,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${jsonData.token}`,
-        },
-      }
-    );
+    let put_user = await axios.put(`${jsonData.baseUrl}/users/4`, {
+      firstName: fUserName,
+      lastName: fLastName,
+      phone: fPhoneN,
+    });
   });
 
   test("user contoller", async () => {
