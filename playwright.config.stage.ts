@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
-import { configDotenv } from "dotenv";
+// import { configDotenv } from "dotenv";
 
-configDotenv({ path: `env/.env.${process.env.ENV}` });
+// configDotenv({ path: `env/.env.${process.env.ENV}` });
 
 /**
  * Read environment variables from file.
@@ -31,11 +31,11 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     // baseURL: "https://qauto.forstudy.space",
-    baseURL: process.env.ENV_URL,
-    httpCredentials: {
-      username: process.env.HTTP_CREDENTIALS_USERNAME,
-      password: process.env.HTTP_CREDENTIALS_PASSWORD,
-    },
+    // baseURL: process.env.ENV_URL,
+    // httpCredentials: {
+    //   username: process.env.HTTP_CREDENTIALS_USERNAME,
+    //   password: process.env.HTTP_CREDENTIALS_PASSWORD,
+    // },
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
