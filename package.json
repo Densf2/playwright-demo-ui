@@ -4,19 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ENV=test npx playwright test tests-examples/storage-state-usage.spec.ts --project=chromium-with-setup"
+    "pretest": "npx jest api-testing/login.test.ts",
+    "test": "npx jest api-testing/user*.test.ts",
+    "posttest": "echo 'tests finsished'",
+    "run-playwith-ui-tests": "ENV=test npx playwright test tests-examples/storage-state-usage.spec.ts --project=chromium-with-setup"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.43.1",
     "@testomatio/reporter": "^1.4.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest": "^29.5.12",
+    "@types/jsonpath": "^0.2.4",
     "@types/node": "^20.12.2",
+    "axios": "^1.6.8",
     "dotenv": "^16.4.5",
-    "newman": "^6.1.2"
+    "fs-extra": "^11.2.0"
   },
   "dependencies": {
+    "jest": "^29.7.0",
+    "jsonpath": "^1.1.1",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2"
   }
 }
