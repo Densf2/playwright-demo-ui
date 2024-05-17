@@ -4,3 +4,8 @@ In case of trigger another file - need to update the path for file in package.js
 _commands_ \
 test - will be trigger the api tests for user functionality \
 In case adding new tests for user functionality - add in name of file (userBLA-BLA.test.ts) \
+
+_structure of UI tests_ \
+For saving all selectors inn one plase used the principle POM (page object model) - stored in the directory pages. \
+For storing selectors related to specific element header - created directory with name - components. \
+For better usage of elements/selectors implemented example of fixture that use the selectors from POM/component.
