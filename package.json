@@ -7,7 +7,8 @@
     "pretest": "npx jest api-testing/login.test.ts",
     "test": "npx jest api-testing/user*.test.ts",
     "posttest": "echo 'tests finsished'",
-    "run-playwith-ui-tests": "ENV=test npx playwright test tests-examples/storage-state-usage.spec.ts --project=chromium-with-setup"
+    "run-playwith-ui-tests": "ENV=test npx playwright test tests-examples/storage-state-usage.spec.ts --project=chromium-with-setup",
+    "ui_tests_light": "npx playwright test tests-examples/2example.spec.ts --project chromium --config playwright.config.stage.ts"
   },
   "keywords": [],
   "author": "",

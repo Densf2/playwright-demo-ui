@@ -1,0 +1,25 @@
+name: Playwright tests on docker image
+on:
+  push:
+    branches:
+      - actions-playwright-docker
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.43.1-jammy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Add node
+        uses: actions/setup-node@v4
+      - name: Install dependecies
+        run: npm ci
+      - name: Run playwright test
+        run: npm run ui_tests_light
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        if: always() || failure()
+        with:
+          name: playwright-report
+          path: playwright-report
