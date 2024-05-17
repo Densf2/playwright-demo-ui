@@ -3,7 +3,7 @@ In case of trigger another file - need to update the path for file in package.js
 
 _commands_ \
 test - will be trigger the api tests for user functionality \
-run-playwith-ui-tests - trigger the UI tests with steps that login once the user and reuse the auth state in the all tests after. Steps for this located in the config file for playwright, auth.setup.
+run-playwith-ui-tests - trigger the UI tests with steps that login once the user and reuse the auth state in the all tests after. Steps for this located in the config file for playwright & auth.setup.
 
 _structure of UI tests_ \
 For saving all selectors inn one plase used the principle POM (page object model) - stored in the directory pages. \
