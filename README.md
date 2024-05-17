@@ -1,5 +1,4 @@
-For trigger the api tests need to run the `test` command from package.json \
-In case of trigger another file - need to update the path for file in package.json.
+Repo created for testing project with API tests based on axios & UI tests based on playwirght.
 
 _commands_ \
 test - will be trigger the api tests for user functionality \
