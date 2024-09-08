@@ -12,4 +12,5 @@ The file 'storage-state.\*' reuse the auth state and contains the combination of
 
 _env variables usage_ \
 By default for running all the tests need to add env variables in dir env in the root directory of the project. \
-For trigger the tests on Github Actions - created list of secrets for actions.
+For trigger the tests on Github Actions - created list of secrets for actions. \
+Detailed information about GA & secrets: https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
