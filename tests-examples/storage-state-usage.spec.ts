@@ -118,3 +118,24 @@ test.skip("mock response 2 for changed user profile", async ({ page }) => {
   await page.waitForTimeout(2000);
   await page.screenshot({ path: "screenshot-profile-2.png", fullPage: true });
 });
+
+test("check instructions page", async ({ page }) => {
+  await page.goto("/panel/instructions");
+  await expect(page.locator("div.panel-page_heading h1")).toHaveText(
+    "Instructions"
+  );
+  await expect(page.locator("#brandSelectDropdown")).toHaveText("Audi");
+  await expect(page.locator("#modelSelectDropdown")).toHaveText("TT");
+  await expect(
+    page.locator("p.instruction-link_description").nth(0)
+  ).toContainText("Audi TT");
+  await page.locator("#brandSelectDropdown").click();
+  await page.locator("text=BMW").click();
+  await page.locator("#modelSelectDropdown").click();
+  await page.locator("text=X5").click();
+  await page.locator("button.instructions-search-controls_search").click();
+  // after changing the model to X5, the instruction should be updated
+  await expect(
+    page.locator("p.instruction-link_description").nth(0)
+  ).toContainText("BMW X5");
+});
