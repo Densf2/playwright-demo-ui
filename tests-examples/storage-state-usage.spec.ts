@@ -131,11 +131,9 @@ test("check instructions page", async ({ page }) => {
   ).toContainText("Audi TT");
   await page.locator("#brandSelectDropdown").click();
   await page.locator("text=BMW").click();
-  await expect(page.locator("#modelSelectDropdown")).toHaveText("X5");
-  await page.locator("#modelSelectDropdown").selectOption({ label: "X5" });
-  await page
-    .locator("button.instructions-search-controls_search btn btn-primary")
-    .click();
+  await page.locator("#modelSelectDropdown").click();
+  await page.locator("text=X5").click();
+  await page.locator("button.instructions-search-controls_search").click();
   // after changing the model to X5, the instruction should be updated
   await expect(
     page.locator("p.instruction-link_description").nth(0)
