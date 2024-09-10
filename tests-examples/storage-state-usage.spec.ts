@@ -129,4 +129,15 @@ test("check instructions page", async ({ page }) => {
   await expect(
     page.locator("p.instruction-link_description").nth(0)
   ).toContainText("Audi TT");
+  await page.locator("#brandSelectDropdown").click();
+  await page.locator("text=BMW").click();
+  await expect(page.locator("#modelSelectDropdown")).toHaveText("X5");
+  await page.locator("#modelSelectDropdown").selectOption({ label: "X5" });
+  await page
+    .locator("button.instructions-search-controls_search btn btn-primary")
+    .click();
+  // after changing the model to X5, the instruction should be updated
+  await expect(
+    page.locator("p.instruction-link_description").nth(0)
+  ).toContainText("BMW X5");
 });
