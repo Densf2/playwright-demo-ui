@@ -1,6 +1,4 @@
 import { test, expect, request } from "@playwright/test";
-import path from "path";
-import fs from "fs-extra";
 
 test("check garage page", async ({ page, request }) => {
   //   page.on("request", (request) =>
