@@ -1,4 +1,6 @@
 import { test, expect, request } from "@playwright/test";
+import path from "path";
+import fs from "fs-extra";
 
 test("check garage page", async ({ page, request }) => {
   //   page.on("request", (request) =>
@@ -138,4 +140,22 @@ test("check instructions page", async ({ page }) => {
   await expect(
     page.locator("p.instruction-link_description").nth(0)
   ).toContainText("BMW X5");
+});
+
+test("check instructions file download", async ({ page }) => {
+  await page.goto("/panel/instructions");
+  await page.locator("#brandSelectDropdown").click();
+  await page.locator("text=BMW").click();
+  await page.locator("#modelSelectDropdown").click();
+  await page.locator("text=X6").click();
+  await page.locator("button.instructions-search-controls_search").click();
+  await expect(
+    page.locator("p.instruction-link_description").nth(0)
+  ).toContainText("BMW X6");
+  const downloadPromise = page.waitForEvent("download");
+  // Click on the download button
+  await page.locator("a.instruction-link_download").nth(0).click();
+  const download = await downloadPromise;
+  // Get the downloaded file path & verify the file name
+  expect(download.suggestedFilename()).toContain("BMW X6.pdf");
 });
