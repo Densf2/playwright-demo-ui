@@ -1,4 +1,4 @@
-name: Api Tests for dummy webiste
+name: Api Tests for dummy website
 on:
   push:
     branches:
