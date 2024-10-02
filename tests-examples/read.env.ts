@@ -1,2 +1,2 @@
-const readMyEnv = process.env.MY_ENV;
-console.log(readMyEnv);
+const READMYENV = process.env.MY_ENV;
+console.log(READMYENV);
