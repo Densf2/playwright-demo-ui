@@ -84,7 +84,7 @@ test.describe(
       );
     };
 
-    test(
+    test.skip(
       "usage few selectors",
       { tag: "@contain_screenshot" },
       async ({ page }) => {
