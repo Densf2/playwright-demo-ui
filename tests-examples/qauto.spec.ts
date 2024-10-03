@@ -99,29 +99,20 @@ test.describe(
       { tag: "@contain_screenshot" },
       async ({ page }) => {
         await page.goto("/");
-        await page.getByRole("button", { name: "Sign In" }).click();
-        await page.locator('input[name="email"]').fill(loginName);
-        await page.locator('input[name="password"]').fill(loginPass);
+        await loginWIthParams(page, loginName, loginPass)
         await page
           .locator('button:has-text("SignIn"), button:has-text("Login")')
           .click();
         await page.waitForURL("/panel/garage");
         await page.waitForTimeout(2000);
-        // await expect(page.locator(".panel-page h1")).toHaveScreenshot(
-        // "main-page.png"
-        // );
-
         // need to rewrite
         await expect(page).toHaveScreenshot("main-page-actual.png");
-        await page.pause();
-        // const buttonLocator = page.locator("button");
-        // await buttonLocator.filter({ hasText: "Login" }).click();
-
-        // // locators in locators
-        // const footerModal = page.locator("modal-footer");
-        // const registerButton = footerModal.locator(".btn-link");
-        // await registerButton.click();
       }
     );
+    async function loginWIthParams(page, loginNameParam: string, loginPassParam: string) {
+        await page.getByRole("button", { name: "Sign In" }).click();
+        await page.locator('input[name="email"]').fill(loginNameParam);
+        await page.locator('input[name="password"]').fill(loginPassParam);
+    }
   }
 );
