@@ -33,7 +33,8 @@ test.describe(
 
     test.skip("usage of fill method", async ({ page }) => {
       await page.goto("/");
-      await  loginWIthParams(page, loginName, loginPass)
+      // @ts-ignore
+        await  loginWIthParams(page, loginName, loginPass)
       await page.waitForTimeout(3000);
     });
 
@@ -41,6 +42,7 @@ test.describe(
       page,
     }) => {
       await page.goto("/");
+      // @ts-ignore
       await  loginWIthParams(page, loginName, loginPass)
       await page.locator('input[name="password"]').clear();
       await page.getByRole("button", { name: "Login" }).click({ force: true });
@@ -48,6 +50,7 @@ test.describe(
       await expect
         .soft(page.locator("div.invalid-feedback p"))
         .toContainText("Password required");
+        // @ts-ignore
       await page.locator('input[name="password"]').fill(loginPass);
       await page.getByRole("button", { name: "Login" }).click({ force: true });
 
@@ -74,21 +77,22 @@ test.describe(
       // await writeToSessionStorage(page, "key2", "value_for_key2");
     });
 
-    const writeToSessionStorage = async (page, key, value) => {
-      await page.evaluate(
-        (key, value) => {
-          sessionStorage.setItem(key, value);
-        },
-        key,
-        value
-      );
-    };
+    // const writeToSessionStorage = async (page, key, value) => {
+    //   await page.evaluate(
+    //     (key, value) => {
+    //       sessionStorage.setItem(key, value);
+    //     },
+    //     key,
+    //     value
+    //   );
+    // };
 
     test.skip(
       "usage few selectors",
       { tag: "@contain_screenshot" },
       async ({ page }) => {
         await page.goto("/");
+        // @ts-ignore
         await loginWIthParams(page, loginName, loginPass)
         await page
           .locator('button:has-text("SignIn"), button:has-text("Login")')
@@ -99,7 +103,7 @@ test.describe(
         await expect(page).toHaveScreenshot("main-page-actual.png");
       }
     );
-    async function loginWIthParams(page, loginNameParam: string, loginPassParam: string) {
+    async function loginWIthParams(page: Page, loginNameParam: string, loginPassParam: string) {
         await page.getByRole("button", { name: "Sign In" }).click();
         await page.locator('input[name="email"]').fill(loginNameParam);
         await page.locator('input[name="password"]').fill(loginPassParam);
