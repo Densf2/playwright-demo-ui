@@ -1,4 +1,4 @@
-Repo created for testing project with API tests based on axios & UI tests based on playwirght.
+## Repo created for testing project with API tests based on axios & UI tests based on playwirght.
 
 _commands_ \
 test - will be trigger the api tests for user functionality \
