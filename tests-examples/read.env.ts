@@ -1,2 +1,2 @@
-const READMYENV = process.env.MY_ENV;
+const READMYENV=process.env.MY_ENV;
 console.log(READMYENV);
