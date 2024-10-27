@@ -3,8 +3,8 @@ import jsonpath from "jsonpath";
 import fs from "fs-extra";
 import jsonData from "../api-data.json";
 
-let userName: String;
-let userPass: String;
+let userName: string;
+let userPass: string;
 
 describe("authorization", () => {
   test("get all users", async () => {
@@ -12,7 +12,7 @@ describe("authorization", () => {
     userName = String(
       jsonpath.query(all_users_response.data, "$..users[3].username")
     );
-    let userName12 = String(
+    const userName12 = String(
       jsonpath.query(all_users_response.data, "$..users[?(@.id==12)].username")
     );
     userPass = String(
