@@ -1,4 +1,4 @@
-import { test, expect, request } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 test("check garage page", async ({ page, request }) => {
   //   page.on("request", (request) =>
