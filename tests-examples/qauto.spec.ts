@@ -97,16 +97,16 @@ test.describe(
         await page.waitForTimeout(2000);
         // need to rewrite
         await expect(page).toHaveScreenshot("main-page-actual.png");
-      }
+      },
     );
     async function loginWIthParams(
       page: Page,
       loginNameParam: string,
-      loginPassParam: string
+      loginPassParam: string,
     ) {
       await page.getByRole("button", { name: "Sign In" }).click();
       await page.locator('input[name="email"]').fill(loginNameParam);
       await page.locator('input[name="password"]').fill(loginPassParam);
     }
-  }
+  },
 );

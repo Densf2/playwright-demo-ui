@@ -8,11 +8,11 @@ test("has title", async ({ page }) => {
   await page.getByRole("link", { name: "Community" }).click();
   await expect(page.getByRole("heading", { name: "Welcome" })).toBeVisible();
   await expect(page.getByLabel("Breadcrumbs").locator("span")).toContainText(
-    "Welcome"
+    "Welcome",
   );
   await page.getByRole("link", { name: "Live Streams", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "Live Streams" })
+    page.getByRole("heading", { name: "Live Streams" }),
   ).toBeVisible();
   await page.getByLabel("Switch between dark and light").click();
 });
@@ -25,6 +25,6 @@ test("get started link", async ({ page }) => {
 
   // Expects page to have a heading with the name of Installation.
   await expect(
-    page.getByRole("heading", { name: "Installation" })
+    page.getByRole("heading", { name: "Installation" }),
   ).toBeVisible();
 });
