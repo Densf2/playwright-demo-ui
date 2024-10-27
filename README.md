@@ -1,4 +1,4 @@
-## Repository created for testing project with API tests based on axios & UI tests based on playwirght.
+# Repository created for testing project with API tests based on axios & UI tests based on playwirght
 
 _commands_ \
 test - will be trigger the API tests for user functionality \
@@ -13,4 +13,4 @@ The file 'storage-state.\*' reuse the auth state and contains the combination of
 _env variables usage_ \
 By default for running all the tests need to add env variables in dir env in the root directory of the project. \
 For trigger the tests on GitHub Actions - created list of secrets for actions. \
-Detailed information about GA & secrets: https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
+Detailed information about GA & secrets: /actions/security-for-github-actions/security-guides/using-secrets-in-github-actions
