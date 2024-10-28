@@ -3,20 +3,20 @@ import jsonpath from "jsonpath";
 import fs from "fs-extra";
 import jsonData from "../api-data.json";
 
-let userName: String;
-let userPass: String;
+let userName: string;
+let userPass: string;
 
 describe("authorization", () => {
   test("get all users", async () => {
     const all_users_response = await axios.get(`${jsonData.baseUrl}/users`);
     userName = String(
-      jsonpath.query(all_users_response.data, "$..users[3].username")
+      jsonpath.query(all_users_response.data, "$..users[3].username"),
     );
-    let userName12 = String(
-      jsonpath.query(all_users_response.data, "$..users[?(@.id==12)].username")
+    const userName12 = String(
+      jsonpath.query(all_users_response.data, "$..users[?(@.id==12)].username"),
     );
     userPass = String(
-      jsonpath.query(all_users_response.data, "$..users[3].password")
+      jsonpath.query(all_users_response.data, "$..users[3].password"),
     );
     console.log(userName + " pass: " + userPass);
     console.log(userName12);
@@ -34,7 +34,7 @@ describe("authorization", () => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
     jsonData.token = auth_token_response.data.token;
     fs.writeJSONSync("api-data.json", jsonData);

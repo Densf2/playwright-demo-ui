@@ -1,12 +1,12 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Page } from "@playwright/test";
 
 test.describe(
   "Verification of qauto app",
   { tag: ["@qauto", "@regression", "@add_car"] },
   () => {
     test.describe.configure({ mode: "serial" });
-    const loginName = process.env.LOGIN_USERNAME;
-    const loginPass = process.env.LOGIN_PASS;
+    const loginName = process.env.LOGIN_USERNAME || "defaultUsername";
+    const loginPass = process.env.LOGIN_PASS || "defaultPassword";
 
     test("open main page", async ({ page }) => {
       await page.goto("/");
@@ -33,8 +33,7 @@ test.describe(
 
     test.skip("usage of fill method", async ({ page }) => {
       await page.goto("/");
-      // @ts-ignore
-        await  loginWIthParams(page, loginName, loginPass)
+      await loginWIthParams(page, loginName, loginPass);
       await page.waitForTimeout(3000);
     });
 
@@ -42,15 +41,13 @@ test.describe(
       page,
     }) => {
       await page.goto("/");
-      // @ts-ignore
-      await  loginWIthParams(page, loginName, loginPass)
+      await loginWIthParams(page, loginName, loginPass);
       await page.locator('input[name="password"]').clear();
       await page.getByRole("button", { name: "Login" }).click({ force: true });
       // soft assertion
       await expect
         .soft(page.locator("div.invalid-feedback p"))
         .toContainText("Password required");
-        // @ts-ignore
       await page.locator('input[name="password"]').fill(loginPass);
       await page.getByRole("button", { name: "Login" }).click({ force: true });
 
@@ -92,8 +89,7 @@ test.describe(
       { tag: "@contain_screenshot" },
       async ({ page }) => {
         await page.goto("/");
-        // @ts-ignore
-        await loginWIthParams(page, loginName, loginPass)
+        await loginWIthParams(page, loginName, loginPass);
         await page
           .locator('button:has-text("SignIn"), button:has-text("Login")')
           .click();
@@ -101,12 +97,16 @@ test.describe(
         await page.waitForTimeout(2000);
         // need to rewrite
         await expect(page).toHaveScreenshot("main-page-actual.png");
-      }
+      },
     );
-    async function loginWIthParams(page: Page, loginNameParam: string, loginPassParam: string) {
-        await page.getByRole("button", { name: "Sign In" }).click();
-        await page.locator('input[name="email"]').fill(loginNameParam);
-        await page.locator('input[name="password"]').fill(loginPassParam);
+    async function loginWIthParams(
+      page: Page,
+      loginNameParam: string,
+      loginPassParam: string,
+    ) {
+      await page.getByRole("button", { name: "Sign In" }).click();
+      await page.locator('input[name="email"]').fill(loginNameParam);
+      await page.locator('input[name="password"]').fill(loginPassParam);
     }
-  }
+  },
 );

@@ -1,4 +1,5 @@
-import { expect, type Page, type Locator } from "@playwright/test";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { type Page, type Locator } from "@playwright/test";
 import { Header } from "../components/header";
 
 export class LoginPage {

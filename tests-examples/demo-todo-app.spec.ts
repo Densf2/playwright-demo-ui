@@ -4,6 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto("https://demo.playwright.dev/todomvc");
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 test.afterEach(async ({ page }, testInfo) => {
   console.log(`${testInfo.title}`);
 });
@@ -196,7 +197,7 @@ test.describe("Item", () => {
     const secondTodo = todoItems.nth(1);
     await secondTodo.dblclick();
     await expect(secondTodo.getByRole("textbox", { name: "Edit" })).toHaveValue(
-      TODO_ITEMS[1]
+      TODO_ITEMS[1],
     );
     await secondTodo
       .getByRole("textbox", { name: "Edit" })
@@ -226,7 +227,7 @@ test.describe("Editing", () => {
     await expect(
       todoItem.locator("label", {
         hasText: TODO_ITEMS[1],
-      })
+      }),
     ).not.toBeVisible();
     await checkNumberOfTodosInLocalStorage(page, 3);
   });
@@ -329,7 +330,7 @@ test.describe("Clear completed button", () => {
   test("should display the correct text", async ({ page }) => {
     await page.locator(".todo-list li .toggle").first().check();
     await expect(
-      page.getByRole("button", { name: "Clear completed" })
+      page.getByRole("button", { name: "Clear completed" }),
     ).toBeVisible();
   });
 
@@ -347,7 +348,7 @@ test.describe("Clear completed button", () => {
     await page.locator(".todo-list li .toggle").first().check();
     await page.getByRole("button", { name: "Clear completed" }).click();
     await expect(
-      page.getByRole("button", { name: "Clear completed" })
+      page.getByRole("button", { name: "Clear completed" }),
     ).toBeHidden();
   });
 });
@@ -444,7 +445,7 @@ test.describe("Routing", () => {
 
   test("should highlight the currently applied filter", async ({ page }) => {
     await expect(page.getByRole("link", { name: "All" })).toHaveClass(
-      "selected"
+      "selected",
     );
 
     //create locators for active and completed links
@@ -479,12 +480,12 @@ async function checkNumberOfTodosInLocalStorage(page: Page, expected: number) {
 
 async function checkNumberOfCompletedTodosInLocalStorage(
   page: Page,
-  expected: number
+  expected: number,
 ) {
   return await page.waitForFunction((e) => {
     return (
       JSON.parse(localStorage["react-todos"]).filter(
-        (todo: any) => todo.completed
+        (todo: { title: string; completed: boolean }) => todo.completed,
       ).length === e
     );
   }, expected);
@@ -493,7 +494,7 @@ async function checkNumberOfCompletedTodosInLocalStorage(
 async function checkTodosInLocalStorage(page: Page, title: string) {
   return await page.waitForFunction((t) => {
     return JSON.parse(localStorage["react-todos"])
-      .map((todo: any) => todo.title)
+      .map((todo: { title: string; completed: boolean }) => todo.title)
       .includes(t);
   }, title);
 }
