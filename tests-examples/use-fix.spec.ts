@@ -8,5 +8,5 @@ test(
     await loginPage.loginWithDefaultParams();
     await page.screenshot();
     await expect(page.getByRole("list")).toContainText("Porsche Panamera");
-  }
+  },
 );

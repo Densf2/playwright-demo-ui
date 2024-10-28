@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "tests-examples/demo-todo-app.spec.ts",
+    "tests-examples/2example.spec.ts",
+    "tests-examples/example.spec.ts"
+  ],
+  "threshold": 0.1
+}
