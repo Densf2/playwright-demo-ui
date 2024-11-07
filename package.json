@@ -11,7 +11,7 @@
     "ui_tests_light": "npx playwright test tests-examples/2example.spec.ts --project chromium --config playwright.config.stage.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Denys Pavliuk",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^9.0.3",
