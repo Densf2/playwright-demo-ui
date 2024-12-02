@@ -17,7 +17,7 @@
     "@faker-js/faker": "^9.2.0",
     "@playwright/test": "^1.48.0",
     "@testomatio/reporter": "^1.5.3",
-    "@eslint/js": "^9.14.0",
+    "@eslint/js": "^9.16.0",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.13",
     "@types/jsonpath": "^0.2.4",
