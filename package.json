@@ -23,7 +23,7 @@
     "@types/jsonpath": "^0.2.4",
     "@types/node": "^22.15.3",
     "axios": "^1.7.9",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.5.0",
     "eslint": "^9.26.0",
     "fs-extra": "^11.3.0",
     "prettier": "3.5.3",
