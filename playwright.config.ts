@@ -29,6 +29,7 @@ export default defineConfig({
     ["html", { open: "never" }],
     ["dot"],
     ["line"],
+    // steps used for testomatio reporting
     // [
     //   "@testomatio/reporter/lib/adapter/playwright.js",
     //   {
@@ -102,7 +103,7 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
+  /* Run local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
   //   url: 'http://127.0.0.1:3000',
