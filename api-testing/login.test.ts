@@ -3,6 +3,13 @@ import jsonpath from "jsonpath";
 import fs from "fs-extra";
 import jsonData from "../api-data.json";
 
+interface JsonData {
+  baseUrl: string;
+  token?: string;
+}
+// Cast jsonData to the interface
+const typedJsonData = jsonData as JsonData;
+
 let userName: string;
 let userPass: string;
 
@@ -36,7 +43,7 @@ describe("authorization", () => {
         },
       },
     );
-    jsonData.token = auth_token_response.data.token;
-    fs.writeJSONSync("api-data.json", jsonData);
+    typedJsonData.token = auth_token_response.data.token;
+    fs.writeJSONSync("api-data.json", typedJsonData);
   });
 });

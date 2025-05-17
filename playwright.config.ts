@@ -29,6 +29,7 @@ export default defineConfig({
     ["html", { open: "never" }],
     ["dot"],
     ["line"],
+    // steps used for testomatio reporting
     // [
     //   "@testomatio/reporter/lib/adapter/playwright.js",
     //   {
@@ -41,10 +42,25 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     // baseURL: "https://qauto.forstudy.space",
+    // Validate required environment variables
+    ...(function () {
+      const missingVars: string[] = [];
+      if (!process.env.ENV_URL) missingVars.push("ENV_URL");
+      if (!process.env.HTTP_CREDENTIALS_USERNAME)
+        missingVars.push("HTTP_CREDENTIALS_USERNAME");
+      if (!process.env.HTTP_CREDENTIALS_PASSWORD)
+        missingVars.push("HTTP_CREDENTIALS_PASSWORD");
+      if (missingVars.length > 0) {
+        throw new Error(
+          `Missing required environment variables: ${missingVars.join(", ")}`,
+        );
+      }
+      return {};
+    })(),
     baseURL: process.env.ENV_URL,
     httpCredentials: {
-      username: process.env.HTTP_CREDENTIALS_USERNAME,
-      password: process.env.HTTP_CREDENTIALS_PASSWORD,
+      username: process.env.HTTP_CREDENTIALS_USERNAME!,
+      password: process.env.HTTP_CREDENTIALS_PASSWORD!,
     },
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
@@ -102,7 +118,7 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
+  /* Run local dev server before starting the tests */
   // webServer: {
   //   command: 'npm run start',
   //   url: 'http://127.0.0.1:3000',
