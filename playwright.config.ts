@@ -52,7 +52,7 @@ export default defineConfig({
         missingVars.push("HTTP_CREDENTIALS_PASSWORD");
       if (missingVars.length > 0) {
         throw new Error(
-          `Missing required environment variables: ${missingVars.join(", ")}`
+          `Missing required environment variables: ${missingVars.join(", ")}`,
         );
       }
       return {};
