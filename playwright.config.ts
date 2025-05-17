@@ -44,8 +44,8 @@ export default defineConfig({
     // baseURL: "https://qauto.forstudy.space",
     baseURL: process.env.ENV_URL,
     httpCredentials: {
-      username: process.env.HTTP_CREDENTIALS_USERNAME,
-      password: process.env.HTTP_CREDENTIALS_PASSWORD,
+      username: process.env.HTTP_CREDENTIALS_USERNAME ?? "",
+      password: process.env.HTTP_CREDENTIALS_PASSWORD ?? "",
     },
     ignoreHTTPSErrors: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
