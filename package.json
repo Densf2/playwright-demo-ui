@@ -14,7 +14,7 @@
   "author": "Denys Pavliuk",
   "license": "ISC",
   "devDependencies": {
-    "@faker-js/faker": "^9.7.0",
+    "@faker-js/faker": "^9.8.0",
     "@playwright/test": "^1.49.1",
     "@testomatio/reporter": "^1.6.16",
     "@eslint/js": "^9.17.0",
