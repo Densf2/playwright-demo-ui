@@ -8,16 +8,17 @@
     "test": "npx jest api-testing/user*.test.ts",
     "posttest": "echo 'tests finsished'",
     "run-playwith-ui-tests": "ENV=test npx playwright test tests-examples/storage-state-usage.spec.ts --project=chromium-with-setup",
-    "ui_tests_light": "npx playwright test tests-examples/2example.spec.ts --project chromium --config playwright.config.stage.ts"
+    "ui_tests_light": "npx playwright test tests-examples/2example.spec.ts --project chromium --config playwright.config.stage.ts",
+    "ui_tests_links_playground": "npx playwright test tests-examples/uitestingplayground-links.spec.ts --config=playwright.config.stage.ts --reporter=list"
   },
   "keywords": [],
   "author": "Denys Pavliuk",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.39.0",
     "@faker-js/faker": "^10.1.0",
     "@playwright/test": "^1.57.0",
-    "@testomatio/reporter": "^2.6.0",
-    "@eslint/js": "^9.39.0",
+    "@testomatio/reporter": "^0.7.6",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^30.0.0",
     "@types/jsonpath": "^0.2.4",
@@ -26,8 +27,8 @@
     "dotenv": "^17.2.3",
     "eslint": "^9.39.1",
     "fs-extra": "^11.3.3",
-    "prettier": "3.6.2",
     "globals": "^16.5.0",
+    "prettier": "3.6.2",
     "typescript-eslint": "^8.53.1"
   },
   "dependencies": {
