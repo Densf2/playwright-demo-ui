@@ -9,7 +9,7 @@
     "posttest": "echo 'tests finsished'",
     "run-playwith-ui-tests": "ENV=test npx playwright test tests-examples/storage-state-usage.spec.ts --project=chromium-with-setup",
     "ui_tests_light": "npx playwright test tests-examples/2example.spec.ts --project chromium --config playwright.config.stage.ts",
-    "ui_tests_links_playground": "npx playwright test tests-examples/uitestingplayground-links.spec.ts --config=playwright.config.stage.ts --reporter=list"
+    "ui_tests_links_playground": "npx playwright test tests-examples/ui-playground-links.spec.ts --config=playwright.config.stage.ts --reporter=list"
   },
   "keywords": [],
   "author": "Denys Pavliuk",
