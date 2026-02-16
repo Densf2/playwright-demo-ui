@@ -2,4 +2,4 @@
 rules:
   unpinned-uses:
     ignore:
-      - linter.yaml
+      - .github/workflows/linter.yaml
