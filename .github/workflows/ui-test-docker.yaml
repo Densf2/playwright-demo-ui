@@ -23,7 +23,7 @@ jobs:
       - name: Run playwright test
         run: npm run ui_tests_light
       - name: Archive test results
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f #v6.0
         if: always() || failure()
         with:
           name: playwright-report
