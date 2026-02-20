@@ -3,8 +3,7 @@
     "tests-examples/demo-todo-app.spec.ts",
     "tests-examples/2example.spec.ts",
     "tests-examples/example.spec.ts",
-    "**/workflows/ui-test.yaml",
-    "**/workflows/api-test.yaml"
+    "**/workflows/*-test.yaml"
   ],
   "threshold": 1.3
 }
