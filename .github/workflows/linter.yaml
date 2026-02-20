@@ -35,3 +35,4 @@ jobs:
           VALIDATE_JSON: false
           VALIDATE_TYPESCRIPT_STANDARD: false
           VALIDATE_TYPESCRIPT_ES: false
+          JSCPD_CONFIG_FILE: .jscpd.json
