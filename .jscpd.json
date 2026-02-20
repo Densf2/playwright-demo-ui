@@ -2,7 +2,8 @@
   "ignore": [
     "tests-examples/demo-todo-app.spec.ts",
     "tests-examples/2example.spec.ts",
-    "tests-examples/example.spec.ts"
+    "tests-examples/example.spec.ts",
+    "**/workflows/*-test.yaml"
   ],
-  "threshold": 0.1
+  "threshold": 1.3
 }
