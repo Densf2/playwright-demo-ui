@@ -33,6 +33,5 @@ jobs:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_JSON: false
-          VALIDATE_TYPESCRIPT_STANDARD: false
           VALIDATE_TYPESCRIPT_ES: false
           JSCPD_CONFIG_FILE: .jscpd.json
