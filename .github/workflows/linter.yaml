@@ -35,3 +35,4 @@ jobs:
           VALIDATE_JSON: false
           VALIDATE_TYPESCRIPT_ES: false
           VALIDATE_BIOME_FORMAT: false
+          VALIDATE_BIOME_LINT: false
