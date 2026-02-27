@@ -1,4 +1,4 @@
----
 rules:
   unpinned-uses:
-    ignore: [.github/workflows/linter.yaml]
+    ignore:
+      - .github/workflows/linter.yaml

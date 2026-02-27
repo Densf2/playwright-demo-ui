@@ -25,7 +25,7 @@ describe("authorization", () => {
     userPass = String(
       jsonpath.query(all_users_response.data, "$..users[3].password"),
     );
-    console.log(userName + " pass: " + userPass);
+    console.log(`${userName} pass: ${userPass}`);
     console.log(userName12);
     expect(all_users_response.status).toEqual(200);
   });

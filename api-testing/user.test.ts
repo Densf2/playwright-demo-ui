@@ -46,13 +46,6 @@ describe("tests for users", () => {
   });
 
   test("PUT user data", async () => {
-    //     fetch('https://dummyjson.com/users/1', {
-    //   method: 'PUT', /* or PATCH */
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     lastName: 'Owais'
-    //   })
-    // })
     await axios.put(`${jsonData.baseUrl}/users/4`, {
       firstName: fUserName,
       lastName: fLastName,
@@ -60,7 +53,7 @@ describe("tests for users", () => {
     });
   });
 
-  test("user contoller", async () => {
+  test("user controller", async () => {
     await controllers.getUserById("4");
   });
 });
