@@ -28,7 +28,7 @@
     "dotenv": "^17.4.2",
     "eslint": "^10.7.0",
     "fs-extra": "^11.3.6",
-    "globals": "^17.7.0",
+    "globals": "^17.8.0",
     "prettier": "3.9.6",
     "typescript-eslint": "^8.56.1"
   },
