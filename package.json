@@ -30,7 +30,7 @@
     "fs-extra": "^11.3.6",
     "globals": "^17.8.0",
     "prettier": "3.9.6",
-    "typescript-eslint": "^8.56.1"
+    "typescript-eslint": "^8.66.0"
   },
   "dependencies": {
     "jest": "^30.4.2",
