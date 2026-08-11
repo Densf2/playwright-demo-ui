@@ -43,7 +43,8 @@ describe("authorization", () => {
         },
       },
     );
-    typedJsonData.token = auth_token_response.data.token;
+    expect(auth_token_response.status).toEqual(200);
+    typedJsonData.token = auth_token_response.data.accessToken;
     fs.writeJSONSync("api-data.json", typedJsonData);
   });
 });
