@@ -2,13 +2,6 @@ import { defineConfig, devices } from "@playwright/test";
 import { configDotenv } from "dotenv";
 
 configDotenv({ path: `env/.env.${process.env.ENV}` });
-
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -24,7 +17,6 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["html", { open: "never" }],
     ["dot"],
