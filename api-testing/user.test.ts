@@ -1,59 +1,44 @@
-import axios from "axios";
 import jsonData from "../api-data.json";
-import { fakerEN } from "@faker-js/faker";
 import { ApiControllers } from "./controller";
 
-const fUserName = fakerEN.person.firstName();
-const fLastName = fakerEN.person.lastName();
-const fPhoneN = fakerEN.phone.number();
+const randomString = (prefix: string) =>
+  `${prefix}${Math.random().toString(36).slice(2, 8)}`;
+
+const fUserName = randomString("First");
+const fLastName = randomString("Last");
+const fPhoneN = `+1555${Math.floor(1000000 + Math.random() * 8999999)}`;
 
 describe("tests for users", () => {
   const controllers = new ApiControllers();
-  const apiClient = axios.create({
-    baseURL: `${jsonData.baseUrl}`,
-  });
-
-  apiClient.interceptors.request.use(function (config) {
-    config.headers.Authorization = `Bearer ${jsonData.token}`;
-    console.log(`Request URL: ${config.baseURL}${config.url}`);
-    return config;
-  });
 
   test("get current user", async () => {
-    await apiClient.get(`/user/me`).then(function (response) {
-      console.log(response.data);
-      console.log(response.status);
-      console.log(response.statusText);
+    const response = await controllers.getCurrentUser(jsonData.token as string);
+    expect(response.status).toBe(200);
+    expect(response.data.id).toEqual(expect.any(Number));
+    expect(response.data.username).toEqual(expect.any(String));
+    expect(response.data.email).toEqual(expect.any(String));
+  });
+
+  test("get current user with invalid token", async () => {
+    await expect(controllers.getCurrentUser("invalid-token")).rejects.toMatchObject({
+      response: { status: 401 },
     });
   });
 
-  test("get current user with try/catch", async () => {
-    try {
-      await axios.get(`${jsonData.baseUrl}/user/me`).catch((err) => {
-        if (err.response.status == 404) {
-          throw new Error("Opa 404 errora");
-        }
-        throw err;
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  });
-
-  test.skip("get current user with expect", async () => {
-    const reponseT = await axios.get(`${jsonData.baseUrl}/user/me`);
-    expect(reponseT.status).toBe(200);
-  });
-
   test("PUT user data", async () => {
-    await axios.put(`${jsonData.baseUrl}/users/4`, {
+    const response = await controllers.updateUser(4, {
       firstName: fUserName,
       lastName: fLastName,
       phone: fPhoneN,
     });
+    expect(response.status).toBe(200);
+    expect(response.data.firstName).toBe(fUserName);
+    expect(response.data.lastName).toBe(fLastName);
+    expect(response.data.phone).toBe(fPhoneN);
   });
 
   test("user controller", async () => {
-    await controllers.getUserById("4");
+    const response = await controllers.getUserById("4");
+    expect(response.data.id).toBe(4);
   });
 });
