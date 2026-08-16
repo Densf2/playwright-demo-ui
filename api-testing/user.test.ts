@@ -20,7 +20,9 @@ describe("tests for users", () => {
   });
 
   test("get current user with invalid token", async () => {
-    await expect(controllers.getCurrentUser("invalid-token")).rejects.toMatchObject({
+    await expect(
+      controllers.getCurrentUser("invalid-token"),
+    ).rejects.toMatchObject({
       response: { status: 401 },
     });
   });

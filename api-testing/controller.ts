@@ -47,7 +47,10 @@ export class ApiControllers {
     return axios.post(`${jsonData.baseUrl}/products/add`, data);
   }
 
-  async updateProduct(productId: string | number, data: Record<string, unknown>) {
+  async updateProduct(
+    productId: string | number,
+    data: Record<string, unknown>,
+  ) {
     return axios.put(`${jsonData.baseUrl}/products/${productId}`, data);
   }
 
