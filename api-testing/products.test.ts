@@ -17,7 +17,9 @@ describe("tests for products", () => {
     expect(response.status).toBe(200);
     expect(Array.isArray(response.data.products)).toBe(true);
     expect(response.data.products.length).toBeGreaterThan(0);
-    expect(response.data.total).toBeGreaterThanOrEqual(response.data.products.length);
+    expect(response.data.total).toBeGreaterThanOrEqual(
+      response.data.products.length,
+    );
   });
 
   test("search products", async () => {
@@ -26,7 +28,8 @@ describe("tests for products", () => {
     expect(response.status).toBe(200);
     expect(response.data.products.length).toBeGreaterThan(0);
     for (const product of response.data.products) {
-      const haystack = `${product.title} ${product.description} ${product.category} ${product.brand}`.toLowerCase();
+      const haystack =
+        `${product.title} ${product.description} ${product.category} ${product.brand}`.toLowerCase();
       expect(haystack).toContain(query);
     }
   });
@@ -60,7 +63,9 @@ describe("tests for products", () => {
 
   test("update product", async () => {
     const updatedTitle = "Updated Product Title";
-    const response = await controllers.updateProduct(1, { title: updatedTitle });
+    const response = await controllers.updateProduct(1, {
+      title: updatedTitle,
+    });
     expect(response.status).toBe(200);
     expect(response.data.id).toBe(1);
     expect(response.data.title).toBe(updatedTitle);
