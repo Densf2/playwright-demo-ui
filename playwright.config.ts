@@ -69,6 +69,7 @@ export default defineConfig({
       name: "chromium-with-setup",
       use: {
         ...devices["Desktop Chrome"],
+        channel: "chrome",
         storageState: "playwright/.auth/user.json",
       },
       dependencies: ["setup"],
@@ -76,7 +77,7 @@ export default defineConfig({
 
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      use: { ...devices["Desktop Chrome"], channel: "chrome" },
     },
 
     {
