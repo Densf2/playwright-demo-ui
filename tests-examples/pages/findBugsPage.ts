@@ -26,7 +26,7 @@ export class FindBugsPage {
   }
 
   private cardTitleLink(card: Locator): Locator {
-    return card.locator(".ec_product_type1 h3.ec_product_title a");
+    return card.locator(".ec_product_type1 h3.ec_product_title_type1 a");
   }
 
   private cardPrice(card: Locator): Locator {
