@@ -1,7 +1,13 @@
 import { test, expect } from "@playwright/test";
 import { TypesOfBugsPage } from "./pages/typesOfBugsPage";
 
-const EXPECTED_BUG_TYPES = ["Functional", "Visual", "Content", "Performance", "Crash"];
+const EXPECTED_BUG_TYPES = [
+  "Functional",
+  "Visual",
+  "Content",
+  "Performance",
+  "Crash",
+];
 
 test.describe("AcademyBugs - Types of Bugs", () => {
   test("should display the Types of Bugs page", async ({ page }) => {
@@ -13,7 +19,9 @@ test.describe("AcademyBugs - Types of Bugs", () => {
     await expect(typesOfBugsPage.tiles).toHaveCount(EXPECTED_BUG_TYPES.length);
   });
 
-  test("should list bug type categories in the expected order", async ({ page }) => {
+  test("should list bug type categories in the expected order", async ({
+    page,
+  }) => {
     const typesOfBugsPage = new TypesOfBugsPage(page);
     await typesOfBugsPage.open();
 
@@ -21,7 +29,9 @@ test.describe("AcademyBugs - Types of Bugs", () => {
     expect(names).toEqual(EXPECTED_BUG_TYPES);
   });
 
-  test("should display a non-empty description for every bug type tile", async ({ page }) => {
+  test("should display a non-empty description for every bug type tile", async ({
+    page,
+  }) => {
     const typesOfBugsPage = new TypesOfBugsPage(page);
     await typesOfBugsPage.open();
 
