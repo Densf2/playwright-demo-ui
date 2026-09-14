@@ -18,7 +18,9 @@ export class ProductPage {
     this.quantityInput = form.locator("input.ec_quantity");
     this.increaseQtyButton = form.locator("input.ec_plus");
     this.decreaseQtyButton = form.locator("input.ec_minus");
-    this.addToCartButton = form.locator('input[type="submit"][value="ADD TO CART"]');
+    this.addToCartButton = form.locator(
+      'input[type="submit"][value="ADD TO CART"]',
+    );
   }
 
   async getTitle(): Promise<string> {
