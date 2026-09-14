@@ -8,7 +8,10 @@ export class TypesOfBugsPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.heading = page.getByRole("heading", { name: "Types of Bugs", exact: true });
+    this.heading = page.getByRole("heading", {
+      name: "Types of Bugs",
+      exact: true,
+    });
     this.subheading = page.getByText(
       "Learn the different types of bugs that commonly occur in websites and apps.",
     );
