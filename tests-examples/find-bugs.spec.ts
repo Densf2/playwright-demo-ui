@@ -15,7 +15,9 @@ test.describe("AcademyBugs - Find Bugs Store", () => {
     await expect(findBugsPage.productCards.first()).toBeVisible();
   });
 
-  test("should sort products by price ascending when Price Low-High is selected", async ({ page }) => {
+  test("should sort products by price ascending when Price Low-High is selected", async ({
+    page,
+  }) => {
     const findBugsPage = new FindBugsPage(page);
     await findBugsPage.open();
     await findBugsPage.sortBy("Price Low-High");
@@ -27,7 +29,9 @@ test.describe("AcademyBugs - Find Bugs Store", () => {
     expect(prices).toEqual(sortedPrices);
   });
 
-  test("should sort products alphabetically when Title A-Z is selected", async ({ page }) => {
+  test("should sort products alphabetically when Title A-Z is selected", async ({
+    page,
+  }) => {
     const findBugsPage = new FindBugsPage(page);
     await findBugsPage.open();
     await findBugsPage.sortBy("Title A-Z");
@@ -37,7 +41,9 @@ test.describe("AcademyBugs - Find Bugs Store", () => {
     expect(titles).toEqual(sortedTitles);
   });
 
-  test("should open a product page with matching title and price", async ({ page }) => {
+  test("should open a product page with matching title and price", async ({
+    page,
+  }) => {
     const findBugsPage = new FindBugsPage(page);
     await findBugsPage.open();
     await findBugsPage.openProduct(KNOWN_PRODUCT);
@@ -48,7 +54,9 @@ test.describe("AcademyBugs - Find Bugs Store", () => {
     expect(await productPage.getPrice()).toBe(45);
   });
 
-  test("should update the quantity field when using the +/- steppers", async ({ page }) => {
+  test("should update the quantity field when using the +/- steppers", async ({
+    page,
+  }) => {
     const findBugsPage = new FindBugsPage(page);
     await findBugsPage.open();
     await findBugsPage.openProduct(KNOWN_PRODUCT);
@@ -78,7 +86,9 @@ test.describe("AcademyBugs - Find Bugs Store", () => {
     expect(await cartPage.getItemQuantity(KNOWN_PRODUCT)).toBe(2);
   });
 
-  test("should empty the cart after removing the only item", async ({ page }) => {
+  test("should empty the cart after removing the only item", async ({
+    page,
+  }) => {
     const findBugsPage = new FindBugsPage(page);
     await findBugsPage.open();
     await findBugsPage.openProduct(KNOWN_PRODUCT);
